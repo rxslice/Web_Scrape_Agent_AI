@@ -1,0 +1,29 @@
+{
+      "name": "enterprise-web-scraper-backend",
+      "version": "1.0.0",
+      "description": "Backend for the enterprise web scraper",
+      "main": "index.js",
+      "scripts": {
+            "start": "node index.js"
+      },
+      "dependencies": {
+            "@json2csv/plainjs": "^6.0.0",
+            "@tensorflow/tfjs-node": "^4.17.0",
+            "axios": "^1.6.7",
+            "bottleneck": "^2.19.5",
+            "cheerio": "^1.0.0-rc.12",
+            "cors": "^2.8.5",
+            "mongodb": "^6.4.0",
+            "node-cron": "^3.0.3",
+            "os-utils": "^0.0.14",
+            "puppeteer": "^22.3.0",
+            "socket.io": "^4.7.4",
+            "sqlite": "^5.1.1",
+            "sqlite3": "^5.1.7",
+            "tesseract.js": "^5.0.4",
+            "winston": "^3.12.0"
+      },
+      "devDependencies": {
+            "dotenv": "^16.4.7"
+      }
+}
