@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Enterprise Web Scraper Documentation</title>
+      <style>
+        body { font-family: sans-serif; line-height: 1.6; margin: 20px; color: #333; }
+        h1, h2, h3 { color: #0056b3; }
+        h1 { border-bottom: 2px solid #0056b3; padding-bottom: 10px; }
+        h2 { margin-top: 30px; border-bottom: 1px solid #0056b3; padding-bottom: 5px; }
+        h3 { margin-top: 20px; }
+        ul { margin-left: 20px; list-style-type: disc; }
+        li { margin-bottom: 5px; }
+        code { background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace; }
+        pre { background-color: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; font-family: monospace; }
+        .important { color: red; font-weight: bold; }
+        .note { font-style: italic; color: #777; }
+        .code-block { margin: 10px 0; }
+      </style>
+    </head>
+    <body>
+      <h1>Enterprise Web Scraper Documentation</h1>
+
+      <h2>Introduction</h2>
+      <p>
+        This document provides comprehensive documentation for the Enterprise Web Scraper, an autonomous agent designed to extract data from websites based on predefined tasks. The agent is built using Node.js, React, and Material UI, and it offers a wide range of features for enterprise-level web scraping.
+      </p>
+
+      <h2>Architecture</h2>
+      <p>
+        The agent is built with a modular architecture, consisting of the following key components:
+      </p>
+      <ul>
+        <li><strong>Backend (Node.js):</strong> Handles the core logic for scraping, data processing, and task scheduling.</li>
+        <li><strong>UI (React):</strong> Provides a user-friendly interface for configuring and monitoring the agent.</li>
+        <li><strong>Database (SQLite, MongoDB):</strong> Stores scraped data and configuration settings.</li>
+        <li><strong>WebSockets:</strong> Enables real-time log updates in the UI.</li>
+      </ul>
+
+      <h2>Backend Setup</h2>
+      <h3>Prerequisites</h3>
+      <ul>
+        <li>Node.js (v16 or higher)</li>
+        <li>npm (Node Package Manager)</li>
+      </ul>
+
+      <h3>Installation</h3>
+      <p>
+        Follow these steps to set up the backend:
+      </p>
+      <ol>
+        <li>
+          <strong>Navigate to the backend directory:</strong>
+          <p>
+            Open your terminal or command prompt and use the <code>cd</code> command to navigate to the backend directory. This is the directory where your <code>package.json</code> and <code>index.js</code> files are located.
+            <br>
+            <strong>Example (Windows):</strong>
+            <pre><code>cd "C:\path\to\your\enterprise-web-scraper-backend"</code></pre>
+            <strong>Example (macOS/Linux):</strong>
+            <pre><code>cd /path/to/your/enterprise-web-scraper-backend</code></pre>
+          </p>
+        </li>
+        <li>
+          <strong>Install dependencies:</strong>
+          <p>
+            Run the following commands one by one to remove any existing <code>node_modules</code> and reinstall all dependencies:
+            <br>
+            <strong>Windows:</strong>
+            <pre><code>rd /s /q node_modules
+    npm install
+    npm install dotenv</code></pre>
+            <strong>macOS/Linux:</strong>
+            <pre><code>rm -rf node_modules
+    npm install
+    npm install dotenv</code></pre>
+          </p>
+        </li>
+        <li>
+          <strong>Create a <code>.env</code> file:</strong>
+          <p>
+            Create a <code>.env</code> file in the backend directory and configure environment variables (see Configuration section).
+          </p>
+        </li>
+      </ol>
+
+      <h3>Running the Backend</h3>
+      <p>
+        Start the backend server:
+        <pre><code>npm start</code></pre>
+      </p>
+
+      <h2>UI Setup</h2>
+      <h3>Prerequisites</h3>
+      <ul>
+        <li>Node.js (v16 or higher)</li>
+        <li>npm (Node Package Manager)</li>
+      </ul>
+
+      <h3>Installation</h3>
+      <p>
+        Follow these steps to set up the UI:
+      </p>
+      <ol>
+        <li>
+          <strong>Navigate to the UI directory:</strong>
+          <p>
+            Open a new terminal or command prompt window and use the <code>cd</code> command to navigate to the UI directory. This is the directory where your UI's <code>package.json</code> file is located.
+            <br>
+            <strong>Example (Windows):</strong>
+            <pre><code>cd "C:\path\to\your\enterprise-web-scraper-ui"</code></pre>
+            <strong>Example (macOS/Linux):</strong>
+            <pre><code>cd /path/to/your/enterprise-web-scraper-ui</code></pre>
+          </p>
+        </li>
+        <li>
+          <strong>Install dependencies:</strong>
+          <p>
+            Run the following command to install the UI dependencies:
+            <pre><code>npm install</code></pre>
+          </p>
+        </li>
+      </ol>
+
+      <h3>Running the UI</h3>
+      <p>
+        Start the UI development server:
+        <pre><code>npm start</code></pre>
+        <br>
+        This will usually open a new browser window or tab automatically at <code>http://localhost:3000</code>. If it doesn't open automatically, you can manually open your browser and go to <code>http://localhost:3000</code>.
+      </p>
+
+      <h2>Configuration</h2>
+      <p>
+        The agent is configured using environment variables and a configuration file (<code>src/config.js</code> in the backend).
+      </p>
+
+      <h3>Environment Variables (.env)</h3>
+      <p>
+        Create a <code>.env</code> file in the backend directory and set the following variables:
+      </p>
+      <ul>
+        <li><code>SCRAPE_INTERVAL</code>: Interval in seconds to reload config (default: 60).</li>
+        <li><code>DATABASE_FILE</code>: Path to SQLite database file (default: <code>scraped_data.db</code>).</li>
+        <li><code>LOG_LEVEL</code>: Logging level (<code>info</code>, <code>warn</code>, <code>error</code>) (default: <code>info</code>).</li>
+        <li><code>PROXY_URL</code>: Proxy URL (e.g., <code>http://your-proxy:port</code>) (optional).</li>
+        <li><code>MONGODB_URI</code>: MongoDB connection URI (optional).</li>
+        <li><code>AI_API_URL</code>: URL for AI content extraction API (optional).</li>
+        <li><code>AI_API_KEY</code>: API key for AI content extraction (optional).</li>
+        <li><code>NLP_API_URL</code>: URL for NLP API (optional).</li>
+        <li><code>NLP_API_KEY</code>: API key for NLP (optional).</li>
+        <li><code>ANOMALY_API_URL</code>: URL for anomaly detection API (optional).</li>
+        <li><code>ANOMALY_API_KEY</code>: API key for anomaly detection (optional).</li>
+        <li><code>SCRAPE_CONCURRENCY</code>: Number of concurrent scraping tasks (default: 5).</li>
+      </ul>
+
+      <h3>Configuration File (src/config.js)</h3>
+      <p>
+        The <code>src/config.js</code> file in the backend directory contains the following configuration options:
+      </p>
+      <ul>
+        <li><code>userAgentRotation</code>: An array of user-agent strings to rotate.</li>
+        <li><code>dataStorage</code>: The type of data storage (<code>database</code>, <code>file</code>, or <code>mongodb</code>).</li>
+        <li><code>fileStorageOptions</code>: Options for file storage (<code>directory</code> and <code>format</code>).</li>
+        <li><code>tasks</code>: An array of task objects, each with the following properties:
+          <ul>
+            <li><code>name</code>: Name of the task.</li>
+            <li><code>url</code>: URL to scrape.</li>
+            <li><code>schedule</code>: Cron schedule for the task.</li>
+            <li><code>priority</code>: Priority of the task (lower number = higher priority).</li>
+            <li><code>headers</code>: Custom headers for the task.</li>
+            <li><code>retry</code>: Retry configuration (<code>maxAttempts</code> and <code>delay</code>).</li>
+            <li><code>extractionRules</code>: CSS selectors for data extraction.</li>
+            <li><code>validationRules</code>: Data validation rules.</li>
+            <li><code>transformationRules</code>: Data transformation rules.</li>
+            <li><code>processingRules</code>: Data processing rules.</li>
+            <li><code>webhookUrl</code>: URL for webhook notification.</li>
+            <li><code>apiCall</code>: Configuration for API call (<code>url</code>, <code>method</code>, <code>body</code>, <code>headers</code>).</li>
+            <li><code>nlpAnalysis</code>: Enable NLP analysis (boolean).</li>
+            <li><code>deduplicationKeys</code>: Keys to use for data deduplication.</li>
+            <li><code>anomalyDetection</code>: Configuration for anomaly detection (<code>fields</code>).</li>
+            <li><code>aiContentExtraction</code>: Configuration for AI content extraction (<code>keywords</code>).</li>
+            <li><code>usePuppeteer</code>: Use Puppeteer for JavaScript rendering (boolean).</li>
+            <li><code>visualScraping</code>: Configuration for visual scraping (<code>imageSelector</code>).</li>
+            <li><code>pagination</code>: Configuration for pagination (<code>nextSelector</code> and <code>maxPages</code>).</li>
+            <li><code>dependsOn</code>: Name of the task this task depends on.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>UI Components</h2>
+      <p>
+        The UI is built using React and Material UI, and it consists of the following components:
+      </p>
+      <ul>
+        <li><strong>Dashboard:</strong> Displays an overview of the agent's status and tasks.</li>
+        <li><strong>Resource Monitoring:</strong> Displays real-time CPU and memory usage.</li>
+        <li><strong>Task Management:</strong> Allows users to create, edit, and delete tasks.</li>
+        <li><strong>Configuration Settings:</strong> Allows users to configure the agent's settings.</li>
+        <li><strong>Real-Time Log Viewer:</strong> Displays agent logs in real-time.</li>
+        <li><strong>User Authentication:</strong> Implements a basic user authentication system.</li>
+      </ul>
+
+      <h2>API Endpoints</h2>
+      <p>
+        The backend provides the following API endpoints:
+      </p>
+      <ul>
+        <li><code>GET /api/dashboard</code>: Returns dashboard data (status and task counts).</li>
+        <li><code>GET /api/resources</code>: Returns resource usage data (CPU and memory).</li>
+        <li><code>GET /api/tasks</code>: Returns a list of all tasks.</li>
+        <li><code>POST /api/tasks</code>: Creates a new task.</li>
+        <li><code>PUT /api/tasks/:name</code>: Updates an existing task.</li>
+        <li><code>DELETE /api/tasks/:name</code>: Deletes a task.</li>
+        <li><code>GET /api/config</code>: Returns the current configuration.</li>
+        <li><code>PUT /api/config</code>: Updates the configuration.</li>
+      </ul>
+
+      <h2>Logging</h2>
+      <p>
+        The agent uses Winston for logging. Logs are displayed in the UI's real-time log viewer and are also output to the console.
+      </p>
+
+      <h2>Real-Time Updates</h2>
+      <p>
+        The UI uses WebSockets to receive real-time log updates from the backend. The backend emits log messages over WebSockets using Socket.IO.
+      </p>
+
+      <h2>Security</h2>
+      <p>
+        The UI implements a basic user authentication system. However, in a real-world scenario, you would need to implement a more secure authentication system. Sensitive information (API keys, passwords) should be handled securely.
+      </p>
+
+      <h2>Extensibility</h2>
+      <p>
+        The agent is designed to be easily extensible. You can add new features by creating new modules and integrating them with the existing architecture.
+      </p>
+
+      <h2>Troubleshooting</h2>
+      <ul>
+        <li><strong>UI Not Loading:</strong> Ensure the backend is running and accessible at <code>http://localhost:3001</code>.</li>
+        <li><strong>Real-Time Logs Not Updating:</strong> Ensure the backend is emitting log messages over WebSockets.</li>
+        <li><strong>Tasks Not Executing:</strong> Check the task schedules and ensure the agent is running.</li>
+        <li><strong>Errors in the UI:</strong> Check the browser's developer console for error messages.</li>
+      </ul>
+
+      <h2>Contact</h2>
+      <p>
+        For any questions or issues, please contact the development team.
+      </p>
+    </body>
+    </html>
