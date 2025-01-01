@@ -1,38 +1,36 @@
-name: NodeJS with Grunt
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Setup Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-
-    - name: Cache Node Modules
-      uses: actions/cache@v4
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Build with Grunt
-      run: grunt
+{
+  "name": "web-scrape-agent-ai",
+  "version": "1.0.0",
+  "description": "A web scraping agent powered by AI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rxslice/Web_Scrape_Agent_AI.git"
+  },
+  "keywords": [
+    "web",
+    "scraping",
+    "ai",
+    "agent"
+  ],
+  "author": "rxslice",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rxslice/Web_Scrape_Agent_AI/issues"
+  },
+  "homepage": "https://github.com/rxslice/Web_Scrape_Agent_AI#readme",
+  "dependencies": {
+    "axios": "^1.6.7",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.4.5",
+    "openai": "^4.28.0",
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.6.1"
+  }
+}
